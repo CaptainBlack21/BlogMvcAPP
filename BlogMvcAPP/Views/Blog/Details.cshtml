@@ -1,0 +1,44 @@
+﻿@model BlogMvcAPP.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h1>@Model.Baslik</h1>
+<hr />
+<p>
+    <span class="glyphicon glyphicon-time"></span>
+    @Model.EklenmeTarihi
+</p>
+<hr />
+<img class="img-responsive" src="https://www.sccpss.com/PublishingImages/900x300.png" alt="" />
+<hr />
+<blockquote>
+    <p>@Model.Aciklama </p>
+</blockquote>
+<p>
+    @Model.İcerik
+</p>
+
+<div class="comment">
+    <hr />
+    <div class="well">
+        <h4>Yorum Yap :</h4>
+        <form role="form">
+            <div class="form-group"></div>
+            <textarea class="form-control" rows="3"></textarea>
+        </form>
+    </div>
+    <p>
+
+    </p>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <hr />
+</div>
+
+@section sagkolon
+ {
+    @{ Html.RenderAction("katagorilistesi", "Catagory");}
+}
+

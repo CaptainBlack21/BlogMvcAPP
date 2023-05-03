@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BlogMvcAPP.Models.CatagoryModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<hr />
+@if (TempData["catagory1"] != null)
+{
+    var catagory = (BlogMvcAPP.Models.Catagory)TempData["catagory1"];
+    <div class="alert alert-success" role="alert">
+        <strong>
+            <span class="glyphicon glyphicon-ok">
+            </span>
+            @catagory.KatagoriAdi
+        </strong>Kayıt Edildi.
+    </div>
+}
+<p>
+    @Html.ActionLink("Katagori Ekle", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+<table class="table table-bordered tabel-hover table-striped">
+    <tr>
+        <th style="width:70%;">
+            @Html.DisplayNameFor(model => model.KatagoriAdi)
+        </th>
+        <th style="width:16%;">
+            @Html.DisplayNameFor(Model => Model.BlogSayisi)
+        </th>
+        <th style="width:150px"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.KatagoriAdi
+            </td>
+            <td>
+                @item.BlogSayisi
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
